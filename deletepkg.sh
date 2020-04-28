@@ -21,53 +21,118 @@ do
 	case $prefix in
 
 		apps )
-			
-			rm -rf /sda1/data/apps/"$pkgname"
-			rm -rf /newroot/data/apps-mount/`basename $pkgname .sq`
-			echo -e "[ Deleting Apps Package : $pkgname ] " >> "$log_path"
-			sleep 2
-			sync
+			#Check wild card is used or not
+			wild=`echo "${pkgname: -1}"`
+
+			if [ "$wild" == "*" ]
+			then
+				rm -rf /sda1/data/apps/$pkgname
+				echo -e "[ Deleting Apps Package : $pkgname ] " >> "$log_path"
+				sleep 2
+				sync
+			else
+				rm -rf /sda1/data/apps/$pkgname
+				rm -rf /newroot/data/apps-mount/`basename $pkgname .sq`
+				echo -e "[ Deleting Apps Package : $pkgname ] " >> "$log_path"
+				sleep 2
+				sync
+			fi
 			;;
 
 		basic )
+			
+			#Check wild card is used or not
+			wild=`echo "${pkgname: -1}"`
 
-			rm -rf /sda1/data/basic/"$pkgname"
-			rm -rf /newroot/data/basic-mount/`basename $pkgname .sq`
-			echo -e "[ Deleting Baic Package : $pkgname ] " >> "$log_path"
-			sleep 2
-			sync
+			if [ "$wild" == "*" ]
+			then
+				rm -rf /sda1/data/basic/$pkgname
+				echo -e "[ Deleting Baic Package : $pkgname ] " >> "$log_path"
+				sleep 2
+				sync
+			else
+				rm -rf /sda1/data/basic/$pkgname
+				rm -rf /newroot/data/basic-mount/`basename $pkgname .sq`
+				echo -e "[ Deleting Baic Package : $pkgname ] " >> "$log_path"
+				sleep 2
+				sync
+			fi
 			;;
 
 		core )
 			
-			rm -rf /sda1/data/core/"$pkgname"
-			echo -e "[ Deleting Core Package : $pkgname ]" >> "$log_path"
-			sleep 2
-			sync
+			#Check wild card is used or not
+			wild=`echo "${pkgname: -1}"`
+
+			if [ "$wild" == "*" ]
+			then
+					rm -rf /sda1/data/core/$pkgname
+					echo -e "[ Deleting Core Package : $pkgname ]" >> "$log_path"
+					sleep 2
+					sync
+			else
+					rm -rf /sda1/data/core/$pkgname
+					echo -e "[ Deleting Core Package : $pkgname ]" >> "$log_path"
+					sleep 2
+					sync
+			fi
 			;;
 
 		root )
 			
-			rm -rf /newroot/root/"$pkgname"
-			echo -e "[ Deleting Root Package : $pkgname ]" >> "$log_path"
-			sleep 2
-			sync
+			#Check wild card is used or not
+			wild=`echo "${pkgname: -1}"`
+
+			if [ "$wild" == "*" ]
+			then
+					rm -rf /newroot/root/$pkgname
+					echo -e "[ Deleting Root Package : $pkgname ]" >> "$log_path"
+					sleep 2
+					sync
+			else
+					rm -rf /newroot/root/$pkgname
+					echo -e "[ Deleting Root Package : $pkgname ]" >> "$log_path"
+					sleep 2
+					sync
+			fi
 			;;
 
 		data )
 			
-			rm -rf /newroot/data/"$pkgname"
-			echo -e "[ Deleting Data Package : $pkgname ]" >> "$log_path"
-			sleep 2
-			sync
+			#Check wild card is used or not
+			wild=`echo "${pkgname: -1}"`
+			
+			if [ "$wild" == "*" ]
+			then
+					rm -rf /newroot/data/$pkgname
+					echo -e "[ Deleting Data Package : $pkgname ]" >> "$log_path"
+					sleep 2
+					sync
+			else
+					rm -rf /newroot/data/$pkgname
+					echo -e "[ Deleting Data Package : $pkgname ]" >> "$log_path"
+					sleep 2
+					sync
+			fi
 			;;
 
 		boot )
 			
-			rm -rf /sda1/boot/"$pkgname"
-			echo -e "[ Deleting Boot Package : $pkgname ]" >> "$log_path"
-			sleep 2
-			sync
+			#Check wild card is used or not
+			wild=`echo "${pkgname: -1}"`
+			
+			if [ "$wild" == "*" ]
+			then
+					rm -rf /sda1/boot/$pkgname
+					echo -e "[ Deleting Boot Package : $pkgname ]" >> "$log_path"
+					sleep 2
+					sync
+			else
+					rm -rf /sda1/boot/$pkgname
+					echo -e "[ Deleting Boot Package : $pkgname ]" >> "$log_path"
+					sleep 2
+					sync
+			fi
 			;;
 	esac
 done
